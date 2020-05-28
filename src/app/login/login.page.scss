@@ -1,0 +1,62 @@
+@import "../app.component.scss";
+@import "../../global.scss";
+
+.bg-login {
+  width: 100%;
+  height: 100%;
+  background-image: url("/assets/imgs/login-bg.png");
+  background-size: cover; // ajusta na tela
+  background-position: center;
+}
+
+.overlay {
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    to top,
+    #000,
+    rgba(0, 0, 0, 0.945),
+    rgba(0, 0, 0, 0.745),
+    rgba(0, 0, 0, 0.545),
+    transparent
+  );
+}
+
+.logo-white-login {
+  width: 45%;
+}
+
+.bg-transparent {
+  --ion-background-color: transparent !important;
+}
+
+.ctaLogin {
+  color: $purple;
+  cursor: pointer;
+  padding: 10px;
+  background: $snow;
+  border-radius: 100px;
+}
+
+.ctaRegister {
+  color: $orange;
+  cursor: pointer;
+  padding: 10px;
+  background: $snow;
+  border-radius: 100px;
+}
+
+.bg-register {
+  width: 100%;
+  height: 100%;
+  background-size: cover; // ajusta na tela
+  background-image: url("/assets/imgs/register-bg.jpg");
+  background-position: center;
+}
+
+.left {
+  text-align: left;
+}
+.change-login {
+  text-align: right;
+}

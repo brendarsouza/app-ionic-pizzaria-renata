@@ -1,0 +1,108 @@
+<ion-content>
+  <!-- BACKGROUND -->
+  <div class="bg-login" *ngIf="login" [@login]>
+    <!-- OVERLAY -->
+    <div class="overlay">
+      <div>
+        <!-- LOGIN CONTAINER -->
+        <div class="center padding-top-10-percent">
+          <img src="assets/imgs/logo.png" class="logo-white-login" />
+        </div>
+        <!-- TEXTOS -->
+        <div class="mg-top-20">
+          <!-- Título -->
+          <h5 class="snow bold center no-margin">
+            Que bom te ver aqui! <br/> Que tal fazer um pedido?
+          </h5>
+          <br/>
+          <!-- SUBTÍTULO -->
+          <p class="snow center light no-margin mg-top-5">
+            Entre com sua conta para continuar
+          </p>
+        </div>
+        <!-- FORMS E CTA -->
+        <div class="padding-40">
+          <ion-item class="bg-transparent no-padding">
+            <ion-label class="snow" position="floating">E-mail</ion-label>
+            <ion-input class="snow" type="email" [(ngModel)]="loginForm.email"></ion-input>
+          </ion-item>
+
+          <ion-item class="bg-transparent no-padding mg-top-20">
+            <ion-label class="snow" position="floating">Senha</ion-label>
+            <ion-input class="snow" type="password" [(ngModel)]="loginForm.password"></ion-input>
+          </ion-item>
+
+          <!-- Entrar com Telefone -->
+          <div class="padding-top-20 change-login">
+
+            <label class="snow padding-20"> 
+              Entrar com telefone
+              <ion-icon name="phone-portrait-outline"></ion-icon>
+            </label>           
+          </div>
+          <!-- CTA - CALL TO ACTION -->
+          <div class="ctaLogin center bold mg-top-30 no-padding" (click)="fazerLogin()">
+            Entrar
+          </div>
+
+          <!-- Nova Conta -->
+          <div class="txtRegistrar bold mg-top-20 center" (click)="exibirRegistrar()">
+            Quero criar uma nova conta
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- REGISTRO -->
+  <div class="bg-register" *ngIf="register" [@register]>
+    <!-- OVERLAY -->
+    <div class="overlay">
+      <!-- REGISTER CONTAINER -->
+      <div>
+        <!-- LOGO -->
+        <div class="center padding-top-10-percent">
+          <img src="assets/imgs/logo-white.png" class="logo-white-login" />
+        </div>
+        <!-- TEXTOS -->
+        <div class="mg-top-20">
+          <!-- Título -->
+          <h5 class="snow bold center no-margin">
+            Eba! Vamos lá.
+          </h5>
+          <!-- SUBTÍTULO -->
+          <p class="snow center light no-margin mg-top-5">
+            Crie suas credenciais de acesso
+          </p>
+        </div>
+        <!-- FORMS E CTA -->
+        <div class="padding-40-lateral">
+          <ion-item class="bg-transparent no-padding">
+            <ion-label class="snow" position="floating">Como você se chama?</ion-label>
+            <ion-input class="snow" type="text" [(ngModel)]="registerForm.name"></ion-input>
+          </ion-item>
+
+          <ion-item class="bg-transparent no-padding mg-top-10">
+            <ion-label class="snow" position="floating">Qual é o seu e-mail?</ion-label>
+            <ion-input class="snow" type="email" [(ngModel)]="registerForm.email"></ion-input>
+          </ion-item>
+
+          <ion-item class="bg-transparent no-padding mg-top-10">
+            <ion-label class="snow" position="floating">Escolha uma super senha :p</ion-label>
+            <ion-input class="snow" type="password" [(ngModel)]="registerForm.password"></ion-input>
+          </ion-item>
+
+          <!-- CTA - CALL TO ACTION -->
+          <div class="ctaRegister center bold mg-top-10 no-padding" (click)="criarNovaConta()">
+            Cadastrar
+          </div>
+
+          <!-- Já Tenho uma Conta -->
+          <div class="txtRegistrar bold mg-top-10 center" (click)="exibirLogin()">
+            Já tenho uma conta
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</ion-content>

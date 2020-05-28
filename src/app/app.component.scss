@@ -1,0 +1,113 @@
+// Import CSS
+@import "../theme/variables.scss";
+
+// Import Fonts
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,700;1,300&display=swap");
+
+// Global
+* {
+  font-family: "Montserrat", sans-serif;
+  font-size: 9pt;
+}
+
+//Color
+.purple {
+  color: $purple;
+}
+
+.orange {
+  color: $orange;
+}
+
+.dark {
+  color: $dark;
+}
+
+.snow {
+  color: $snow;
+}
+
+.gray {
+  color: $gray;
+}
+
+// Align
+.center {
+  text-align: center; 
+}
+
+// Margin
+.no-margin {
+  margin: 0px;
+}
+
+.mg-top-5 {
+  margin-top: 5px;
+}
+
+.mg-top-10 {
+  margin-top: 10px;
+}
+
+.mg-top-20 {
+  margin-top: 20px;
+}
+
+.mg-top-30 {
+  margin-top: 30px;
+}
+
+.mg-top-40 {
+  margin-top: 40px;
+}
+
+// Padding
+.no-padding {
+  padding: 0px;
+}
+
+.padding-top-5 {
+  padding-top: 5px;
+}
+
+.padding-top-10 {
+  padding-top: 10px;
+}
+
+.padding-top-20 {
+  padding-top: 20px;
+}
+
+.padding-top-10-percent {
+  padding-top: 10%;
+}
+
+.padding-top-30 {
+  padding-top: 30px;
+}
+
+.padding-top-40 {
+  padding-top: 40px;
+}
+
+.padding-40-lateral {
+  padding: 0 40px 0 40px;
+}
+
+.padding-40 {
+  padding: 40px;
+}
+
+// Font Style
+.bold {
+  font-weight: 700;
+}
+
+.light {
+  font-weight: 300;
+}
+
+.txtRegistrar {
+  color: $snow;
+  cursor: pointer;
+}

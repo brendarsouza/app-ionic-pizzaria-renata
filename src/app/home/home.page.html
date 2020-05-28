@@ -1,0 +1,40 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button class="white-icon" autoHide="false"></ion-menu-button>
+    </ion-buttons>
+
+    <ion-buttons slot="secondary"> </ion-buttons>
+
+    <ion-buttons slot="end">
+      <ion-menu-button class="white-icon" autoHide="false">
+        <ion-icon name="cart-outline"></ion-icon>
+      </ion-menu-button>
+    </ion-buttons>
+
+    <ion-title class="brown-title">Home</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="yellow-div">
+    <div class="fullScreenCenter">
+      <h2 class="featured-text">Explore nossas <br />delícias ;p</h2>
+    </div>
+    <ion-slides pager="true" [options]="slideOpts" class="customSlides">
+      <ion-slide
+        class="customSlide"
+        *ngFor="let l of lanches; let i = index"
+        [ngStyle]="{ 'background-image': 'url('+l.image +')'}"
+      >
+        <div class="burgerInfo">
+          <p class="burgerName">{{ l.name }}</p>
+          <p class="burgerPrice">R$ {{ l.price }}</p>
+        </div>
+
+        <!-- ADD -->
+        <img class="addIcon" src="../../assets/imgs/add.png">
+      </ion-slide>
+    </ion-slides>
+  </div>
+</ion-content>

@@ -1,0 +1,101 @@
+ion-toolbar {
+  --background: #fdb813;
+}
+
+ion-toolbar:last-of-type {
+  --border-width: 0;
+}
+
+.white-icon {
+  color: #fff;
+}
+
+.featured-title {
+  color: #4b4237;
+  font-weight: 700;
+  margin-top: 15px;
+  margin-left: 20px;
+}
+
+.yellow-div {
+  width: 100%;
+  height: 50%;
+  background: #fdb813;
+}
+
+.fullScreenCenter {
+  width: 100%;
+  position: absolute;
+}
+
+.featured-text {
+  color: #4b4237;
+  text-align: left;
+  font-weight: 700;
+  margin-left: 25%;
+}
+
+ion-slides {
+  top: 25%;
+  height: 38%;
+  width: 100%;
+  position: absolute;
+}
+
+.customSlide {
+  width: 80% !important;
+  height: 80%;
+  margin-left: 10%;
+  margin-right: 10%;
+  border-radius: 15px;
+  background-size: cover;
+}
+
+
+.slide-zoom {
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    to top,
+    rgb(0, 0, 0),
+    rgba(0, 0, 0, 0.297),
+    rgba(0, 0, 0, 0.428),
+    rgba(0, 0, 0, 0.589)
+  );
+  border-radius: 15px;
+}
+
+.burgerName {
+  color: #fff;
+  font-size: 14px;
+  font-weight: 700;
+  margin-top: 0px;
+  margin-bottom: 0px;
+}
+
+.burgerInfo {
+  left: 10px;
+  bottom: 10px;
+  position: absolute;
+  text-align: left;
+}
+
+.burgerPrice {
+  color: #fff;
+  font-size: 11px;
+  font-weight: 700;
+  margin-top: 0px;
+  margin-bottom: 0px;
+}
+
+.addIcon {
+    position: absolute;
+    right: 20px;
+    bottom: 20px;
+    width: 6%;
+    opacity: 0.5;
+}
+
+.swiper-pagination-bullet-active {
+    background: #4b4237 !important;
+}
