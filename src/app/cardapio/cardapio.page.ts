@@ -4,51 +4,32 @@ import { HeaderPageModule } from "../header/header.module";
 import { Lanches, LanchesService } from "../services/lanches/lanches.service";
 import { Bebidas, BebidasService } from "../services/bebidas/bebidas.service";
 import { NavParams, NavController, LoadingController } from "@ionic/angular";
+import { ProdutosService, Produtos } from '../services/produtos/produtos.service';
 
 @Component({
-  selector: "app-cardapio",
-  templateUrl: "./cardapio.page.html",
-  styleUrls: ["./cardapio.page.scss"],
+  selector: 'app-cardapio',
+  templateUrl: './cardapio.page.html',
+  styleUrls: ['./cardapio.page.scss'],
 })
 export class CardapioPage implements OnInit {
   private loading: HTMLIonLoadingElement;
-  public pizzas: Pizzas[];
-  public bebidas: Bebidas[];
-  public lanches: Lanches[];
+  public produtos: Produtos[];
   public carrinho = [];
   private isShowing = false;
 
   constructor(
-    private pizzasService: PizzasService,
-    private lanchesService: LanchesService,
-    private bebidasService: BebidasService,
+    private produtosService: ProdutosService,
     private loadingController: LoadingController
   ) {}
 
   ngOnInit() {
-    this.getPizzas();
-    this.getLanches();
-    this.getBebidas();
+    this.getProdutos();
     this.presentLoader('Loading');
   }
 
-  public getPizzas() {
-    this.pizzasService.getPizzas().subscribe((res) => {
-      this.pizzas = res;
-      this.dismissLoader();
-    });
-  }
-
-  public getLanches() {
-    this.lanchesService.getLanches().subscribe((res) => {
-      this.lanches = res;
-      this.dismissLoader();
-    });
-  }
-
-  public getBebidas() {
-    this.bebidasService.getBebidas().subscribe((res) => {
-      this.bebidas = res;
+  public getProdutos() {
+    this.produtosService.getProdutos().subscribe((res) => {
+      this.produtos = res;
       this.dismissLoader();
     });
   }
@@ -101,7 +82,7 @@ export class CardapioPage implements OnInit {
   public addItemCart(id) {
     
     for (let index = 0; index < this.carrinho.length; index++) {
-      this.carrinho[index] =  this.pizzasService.getPizza(id);
+      this.carrinho[index] =  this.produtosService.getProduto(id);
       
     }
     console.log(this.carrinho);
