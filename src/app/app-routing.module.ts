@@ -16,8 +16,8 @@ const routes: Routes = [
     loadChildren: () => import('./cardapio/cardapio.module').then( m => m.CardapioPageModule)
   },
   {
-    path: 'cardapio-detalhes/:id',
-    loadChildren: () => import('./cardapio/cardapio-detalhes/cardapio-detalhes.module').then( m => m.CardapioDetalhesPageModule)
+    path: 'cardapio-add-item',
+    loadChildren: () => import('./cardapio/cardapio-add-item/cardapio-add-item.module').then( m => m.CardapioAddItemPageModule)
   },
   {
     path: 'cardapio-detalhes',
@@ -31,6 +31,11 @@ const routes: Routes = [
     path: 'header',
     loadChildren: () => import('./header/header.module').then( m => m.HeaderPageModule)
   },
+  {
+    path: 'carrinho',
+    loadChildren: () => import('./carrinho/carrinho.module').then( m => m.CarrinhoPageModule)
+  },
+
 ];
 
 @NgModule({

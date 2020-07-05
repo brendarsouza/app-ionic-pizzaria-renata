@@ -1,0 +1,80 @@
+ion-toolbar {
+    --background: #fdb813;
+  }
+  
+  .brown-icon {
+    color: #4b4237;
+  }
+  
+  .brown-title {
+    color: #4b4237;
+    font-size: 20px;
+    text-align: left;
+  }
+  
+  .featured-title {
+    color: #4b4237;
+    margin-top: 15px;
+    font-weight: 700;
+    margin-left: 20px;
+  }
+  
+  .border-img {
+    border: 2px solid #702c91;
+  }
+  
+  ion-item {
+    padding: 5px 0px !important;
+    border-top: 0px !important;
+    border-bottom: 2px solid #4b4237 !important;
+  }
+  
+  ion-list {
+    margin-top: 10px !important;
+  }
+  
+  .item-title {
+    color: #4b4237;
+    width: 80%;
+    font-weight: 700;
+  }
+  
+  .item-price {
+    color: #4b4237;
+    width: 80%;
+    font-weight: 700;
+    font-size: 18px;
+  }
+  
+  .item-description {
+    color: #4b4237;
+    width: 60%;
+    font-size: 100;
+    font-size: 12px;
+    font-style: italic;
+  }
+  
+  .item-add-remove {
+    color: #4b4237;
+    right: 12px;
+    bottom: 25px;
+    position: absolute;
+  }
+  
+  .item-inner {
+    border-bottom: 2px !important;
+  }
+  
+  .list-bebidas {
+    margin-top: 25px;
+  }
+  
+  .item_input {
+    width: 5vw;
+    border: none;
+    text-align: center;
+  }
+  
+  .background {
+    background-image: url('../../assets/imgs/Picture1.png');
+  }

@@ -7,13 +7,15 @@ import { IonicModule } from '@ionic/angular';
 import { CardapioAddItemPageRoutingModule } from './cardapio-add-item-routing.module';
 
 import { CardapioAddItemPage } from './cardapio-add-item.page';
+import { HeaderPageModule } from 'src/app/header/header.module';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    CardapioAddItemPageRoutingModule
+    CardapioAddItemPageRoutingModule,
+    HeaderPageModule
   ],
   declarations: [CardapioAddItemPage]
 })
