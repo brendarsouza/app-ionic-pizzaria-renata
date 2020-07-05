@@ -1,23 +1,20 @@
-import { Component, OnInit } from "@angular/core";
-import { Pizzas, PizzasService } from "../services/pizzas/pizzas.service";
-import { HeaderPageModule } from "../header/header.module";
-import { Lanches, LanchesService } from "../services/lanches/lanches.service";
-import { Bebidas, BebidasService } from "../services/bebidas/bebidas.service";
-import { NavParams, NavController, LoadingController } from "@ionic/angular";
+import { Component, OnInit } from '@angular/core';
+import { HeaderPageModule } from '../header/header.module';
+import { NavParams, NavController, LoadingController } from '@ionic/angular';
 import { CardapioService } from '../services/cardapio/cardapio.service';
 import { Cardapio } from '../interfaces/cardapio.interface';
 
 @Component({
-  selector: "app-cardapio",
-  templateUrl: "./cardapio.page.html",
-  styleUrls: ["./cardapio.page.scss"],
+  selector: 'app-cardapio',
+  templateUrl: './cardapio.page.html',
+  styleUrls: ['./cardapio.page.scss'],
 })
 export class CardapioPage implements OnInit {
   private loading: HTMLIonLoadingElement;
-  public cardapio: Cardapio[];
-  public pizzas: Pizzas[];
-  public bebidas: Bebidas[];
-  public lanches: Lanches[];
+  public cardapio: Cardapio[] = [];
+  public pizzas: Cardapio[] = [];
+  public bebidas: Cardapio[] = [];
+  public lanches: Cardapio[] = [];
   public carrinho = [];
   private isShowing = false;
 
@@ -28,6 +25,9 @@ export class CardapioPage implements OnInit {
 
   ngOnInit() {
     this.getCardapio();
+    this.getPizzas();
+    this.getLanches();
+    this.getBebidas();
     this.presentLoader('Loading');
   }
 
@@ -38,12 +38,32 @@ export class CardapioPage implements OnInit {
     });
   }
 
-  
+  public getPizzas() {
+    this.cardapioService.getPizzas().subscribe((res) => {
+      this.pizzas = res;
+      this.dismissLoader();
+    });
+  }
+
+  public getLanches() {
+    this.cardapioService.getLanches().subscribe((res) => {
+      this.lanches = res;
+      this.dismissLoader();
+    });
+  }
+
+  public getBebidas() {
+    this.cardapioService.getBebidas().subscribe((res) => {
+      this.bebidas = res;
+      this.dismissLoader();
+    });
+  }
+
   public async presentLoader(message: string): Promise<void> {
     if (!this.isShowing) {
       this.isShowing = true;
       this.loading = await this.loadingController.create({
-        message: message,
+        message,
       });
       return await this.loading.present();
     } else {
@@ -63,6 +83,7 @@ export class CardapioPage implements OnInit {
   public addItem(item) {
 
     const tmp = document.getElementById(item.id);
+    // tslint:disable-next-line: radix
     const num = parseInt(tmp.getAttribute('value'));
     if (num >= 0) {
       document.getElementById(item.id).setAttribute('value', (num + 1) + '');
@@ -74,6 +95,7 @@ export class CardapioPage implements OnInit {
 
   public removeItem(item) {
     const tmp = document.getElementById(item.id);
+    // tslint:disable-next-line: radix
     const num = parseInt(tmp.getAttribute('value'));
     if (num > 0) {
       document.getElementById(item.id).setAttribute('value', (num - 1) + '');
@@ -85,10 +107,10 @@ export class CardapioPage implements OnInit {
   }
 
   public addItemCart(id) {
-    
+
     for (let index = 0; index < this.carrinho.length; index++) {
       this.carrinho[index] =  this.cardapioService.getItemCardapio(id);
-      
+
     }
     console.log(this.carrinho);
   }

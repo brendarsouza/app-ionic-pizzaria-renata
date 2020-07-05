@@ -12,10 +12,6 @@ const routes: Routes = [
     loadChildren: () => import('./home/home.module').then( m => m.HomePageModule)
   },
   {
-    path: 'menu',
-    loadChildren: () => import('./menu/menu.module').then( m => m.MenuPageModule)
-  },
-  {
     path: 'cardapio',
     loadChildren: () => import('./cardapio/cardapio.module').then( m => m.CardapioPageModule)
   },
@@ -31,14 +27,6 @@ const routes: Routes = [
     path: 'add-item-cardapio',
     loadChildren: () => import('./cardapio/cardapio-detalhes/cardapio-detalhes.module').then( m => m.CardapioDetalhesPageModule)
   },
-  // {
-  //   path: 'pizza-detalhes',
-  //   loadChildren: () => import('./pizzas/pizza-detalhes/pizza-detalhes.module').then( m => m.PizzaDetalhesPageModule)
-  // },
-  // {
-  //   path: 'pizzas',
-  //   loadChildren: () => import('./pizzas/pizzas/pizzas.module').then( m => m.PizzasPageModule)
-  // },
   {
     path: 'header',
     loadChildren: () => import('./header/header.module').then( m => m.HeaderPageModule)
