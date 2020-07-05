@@ -4,6 +4,8 @@ import { HeaderPageModule } from "../header/header.module";
 import { Lanches, LanchesService } from "../services/lanches/lanches.service";
 import { Bebidas, BebidasService } from "../services/bebidas/bebidas.service";
 import { NavParams, NavController, LoadingController } from "@ionic/angular";
+import { CardapioService } from '../services/cardapio/cardapio.service';
+import { Cardapio } from '../interfaces/cardapio.interface';
 
 @Component({
   selector: "app-cardapio",
@@ -12,6 +14,7 @@ import { NavParams, NavController, LoadingController } from "@ionic/angular";
 })
 export class CardapioPage implements OnInit {
   private loading: HTMLIonLoadingElement;
+  public cardapio: Cardapio[];
   public pizzas: Pizzas[];
   public bebidas: Bebidas[];
   public lanches: Lanches[];
@@ -19,40 +22,23 @@ export class CardapioPage implements OnInit {
   private isShowing = false;
 
   constructor(
-    private pizzasService: PizzasService,
-    private lanchesService: LanchesService,
-    private bebidasService: BebidasService,
+    private cardapioService: CardapioService,
     private loadingController: LoadingController
   ) {}
 
   ngOnInit() {
-    this.getPizzas();
-    this.getLanches();
-    this.getBebidas();
+    this.getCardapio();
     this.presentLoader('Loading');
   }
 
-  public getPizzas() {
-    this.pizzasService.getPizzas().subscribe((res) => {
-      this.pizzas = res;
+  public getCardapio() {
+    this.cardapioService.getCardapio().subscribe((res) => {
+      this.cardapio = res;
       this.dismissLoader();
     });
   }
 
-  public getLanches() {
-    this.lanchesService.getLanches().subscribe((res) => {
-      this.lanches = res;
-      this.dismissLoader();
-    });
-  }
-
-  public getBebidas() {
-    this.bebidasService.getBebidas().subscribe((res) => {
-      this.bebidas = res;
-      this.dismissLoader();
-    });
-  }
-
+  
   public async presentLoader(message: string): Promise<void> {
     if (!this.isShowing) {
       this.isShowing = true;
@@ -101,7 +87,7 @@ export class CardapioPage implements OnInit {
   public addItemCart(id) {
     
     for (let index = 0; index < this.carrinho.length; index++) {
-      this.carrinho[index] =  this.pizzasService.getPizza(id);
+      this.carrinho[index] =  this.cardapioService.getItemCardapio(id);
       
     }
     console.log(this.carrinho);

@@ -12,7 +12,7 @@ import { Cardapio } from "../../interfaces/cardapio.interface";
   providedIn: "root",
 })
 export class CardapioService {
-  private PATH = 'cardapio/';
+  private PATH = 'cardapio';
   private cardapioCollection: AngularFirestoreCollection<Cardapio>;
   public cardapio: Observable<Cardapio[]>;
   
