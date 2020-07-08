@@ -5,8 +5,13 @@ import {
   AngularFirestore,
   AngularFirestoreCollection,
 } from 'angularfire2/firestore';
+import * as firebase from 'firebase/app';
+
 import { Observable } from 'rxjs';
 import { Cardapio } from '../../interfaces/cardapio.interface';
+import { FirebaseProvider } from 'src/providers/firebase';
+import { AngularFireAuth } from 'angularfire2/auth';
+
 
 @Injectable({
   providedIn: 'root',
@@ -23,8 +28,15 @@ export class CardapioService {
   public lanches: Observable<Cardapio[]>;
   public bebidas: Observable<Cardapio[]>;
   public sobremesas: Observable<Cardapio[]>;
+  private snapshotChangesSubscription: any;
 
-  constructor(db: AngularFirestore) {
+
+  constructor(
+    private db: AngularFirestore, 
+    private db1: AngularFireDatabase,
+    public afs: AngularFirestore,
+		public afAuth: AngularFireAuth
+    ) {
     this.cardapioCollection = db.collection<Cardapio>('cardapio');
     this.cardapioPizzasCollection = db.collection<Cardapio>('cardapio',
     query => query.where('categoria', '==', 'Pizzas').orderBy('nome', 'asc'));
@@ -117,6 +129,54 @@ export class CardapioService {
 
   removeCardapio(id) {
     return this.cardapioCollection.doc(id).delete();
+  }
+
+  cadastrar(value){
+    return new Promise<any>((resolve, reject) => {
+      let currentUser = firebase.auth().currentUser;
+      this.afs.collection('cardapio').add({
+        nome: value.nome,
+        descricao: value.descricao,
+        categoria: value.categoria,
+        valor: value.valor,
+        image: value.image
+      })
+      .then(
+        res => resolve(res),
+        err => reject(err)
+      )
+    })
+  }
+
+  encodeImageUri(imageUri, callback) {
+    var c = document.createElement('canvas');
+    var ctx = c.getContext("2d");
+    var img = new Image();
+    img.onload = function () {
+      var aux:any = this;
+      c.width = aux.width;
+      c.height = aux.height;
+      ctx.drawImage(img, 0, 0);
+      var dataURL = c.toDataURL("image/jpeg");
+      callback(dataURL);
+    };
+    img.src = imageUri;
+  };
+
+  uploadImage(imageURI, randomId){
+    return new Promise<any>((resolve, reject) => {
+      let storageRef = firebase.storage().ref();
+      let imageRef = storageRef.child('image').child(randomId);
+      this.encodeImageUri(imageURI, function(image64){
+        imageRef.putString(image64, 'data_url')
+        .then(snapshot => {
+          snapshot.ref.getDownloadURL()
+          .then(res => resolve(res))
+        }, err => {
+          reject(err);
+        })
+      })
+    })
   }
 
 }

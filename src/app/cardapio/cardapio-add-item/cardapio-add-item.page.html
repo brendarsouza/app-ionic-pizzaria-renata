@@ -4,11 +4,99 @@
       <ion-menu-button class="brown-icon" autoHide="false"></ion-menu-button>
     </ion-buttons>
     <ion-buttons slot="secondary"> </ion-buttons>
-    <ion-title class="brown-title">Cardápio</ion-title>
+    <ion-title class="brown-title">Novo Item - Cardápio</ion-title>
   </ion-toolbar>
 </ion-header>
-
-<ion-content>
-  <app-header></app-header>  
-
+<ion-content padding>
+  <div>
+    <ion-row no-padding>
+      <ion-col size="6" offset="3">
+        <img [src]="image" alt="this is the image"/>
+      </ion-col>
+    </ion-row>
+    <ion-row no-padding>
+      <ion-col size="6" offset="3">
+        <ion-button fill="outline" expand="block" size="small" (click)="openImagePicker()">Change Picture</ion-button>
+      </ion-col>
+    </ion-row>
+  </div>
+  <form [formGroup]="validations_form" (ngSubmit)="onSubmit(validations_form.value)">
+    <ion-item>
+      <ion-label position="floating" color="primary">Nome</ion-label>
+      <ion-input type="text" formControlName="nome"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating" color="primary">Descricao</ion-label>
+      <ion-input type="text" formControlName="descricao"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating" color="primary">Categoria</ion-label>
+      <ion-input type="text" formControlName="categoria"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating" color="primary">Valor</ion-label>
+      <ion-input type="text" formControlName="valor"></ion-input>
+    </ion-item>
+    <ion-button class="submit-btn" expand="block" type="submit" [disabled]="!validations_form.valid">Create</ion-button>
+  </form>
 </ion-content>
+<!-- <ion-content fullscreen>
+  <app-header></app-header> 
+  <ion-slides>
+
+    <ion-slide>
+      <div class="slide">
+        <img src="../../../assets/imgs/pizza.jpg" />
+      </div>
+    </ion-slide>
+
+    <ion-slide>
+      <img src="../../../assets/imgs/bg-lanches.jpg" />
+    </ion-slide>
+
+    <ion-slide>
+      <img src="../../../assets/imgs/bg-sucos.jpg" />
+    </ion-slide>
+
+    <ion-slide>
+      <img src="../../../assets/imgs/bg-sobremesas.jpg" />
+    </ion-slide>
+
+  </ion-slides> 
+  <ion-card>
+    <ion-card-header>
+      <!-- <ion-card-title>Cardápio</ion-card-title> -->
+      <!-- <ion-card-subtitle>Novo Item</ion-card-subtitle>
+    </ion-card-header>
+    <ion-card-content>   -->
+      <!-- <ion-item>
+        <ion-label position="floating">Categoria do Produto</ion-label>
+        <ion-select  [(ngModel)]="item.categoria" interface="popover">
+          <ion-select-option [(ngModel)]="item.categoria" value="Pizzas">Pizzas</ion-select-option>
+          <ion-select-option [(ngModel)]="item.categoria" value="Lanches">Lanches</ion-select-option>
+          <ion-select-option [(ngModel)]="item.categoria" value="Bebidas">Bebidas</ion-select-option>
+          <ion-select-option [(ngModel)]="item.categoria" value="Sobremesas">Sobremesas</ion-select-option>
+        </ion-select>
+      </ion-item> -->
+      <!-- <ion-item>
+        <ion-label position="floating">Nome do Produto</ion-label>
+        <ion-input [(ngModel)]="item.nome"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">Descrição do Produto</ion-label>
+        <ion-input [(ngModel)]="item.descricao"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">Valor do Produto</ion-label>
+        <ion-input  [(ngModel)]="item.valor" inputmode="decimal" pattern="[0-9]*" type="number"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">Foto do Produto</ion-label>
+        <ion-input type="file"  [(ngModel)]="item.imagem"></ion-input>
+      </ion-item>
+      <div class="ion-padding">
+        <ion-button expand="block" type="submit" class="ion-no-margin" (click)="cadastrarItem()">Cadastrar</ion-button>
+      </div>
+    </ion-card-content>
+  </ion-card>
+</ion-content> --> 

@@ -3,7 +3,7 @@ export interface Cardapio {
     nome: string;
     descricao: string;
     valor: number;
-    categoria: Categoria;
+    categoria: string;
     imagem: string;
 }
 

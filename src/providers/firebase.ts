@@ -12,6 +12,9 @@ export class FirebaseProvider {
     return this.afs.firestore.collection("Users").doc(uid).get();
   }
 
+  cadastrarItemCardapio = (data) => this.afs.collection("cardapio").doc(data.id).set(data);
+
+
   //Get Lanches
   getLanches() {
     return new Promise((resolve, reject) => {

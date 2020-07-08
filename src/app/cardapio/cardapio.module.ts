@@ -8,6 +8,8 @@ import { CardapioPageRoutingModule } from './cardapio-routing.module';
 
 import { CardapioPage } from './cardapio.page';
 import { HeaderPageModule } from '../header/header.module';
+import { AngularFireDatabaseModule } from 'angularfire2/database';
+import { FirebaseProvider } from 'src/providers/firebase';
 
 @NgModule({
   imports: [
@@ -15,7 +17,11 @@ import { HeaderPageModule } from '../header/header.module';
     FormsModule,
     IonicModule,
     CardapioPageRoutingModule,
-    HeaderPageModule
+    HeaderPageModule,
+    AngularFireDatabaseModule
+  ],
+  providers: [
+    FirebaseProvider
   ],
   declarations: [CardapioPage]
 })
