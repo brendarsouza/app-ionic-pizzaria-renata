@@ -6,7 +6,7 @@
     <ion-buttons slot="secondary"> </ion-buttons>
     <ion-title class="brown-title">Cardápio</ion-title>
     <ion-button class="bg-transparent" slot="end" [routerLink]="['/cardapio-add-item']">
-      <ion-icon class="brown-icon bg-transparent" name="add-circle-outline" ></ion-icon>
+      <ion-icon class="brown-icon bg-transparent" color="light" name="add-circle-outline" ></ion-icon>
     </ion-button>
   </ion-toolbar>
 </ion-header>
@@ -40,7 +40,7 @@
             <p class="item-price">{{p.valor | currency:'BRL':true:'1.2-2'}}</p>
             <p class="item-add-remove">
               <ion-button>
-                <ion-icon name="pencil-outline" (click)="editItem(p.id)"></ion-icon>
+                <ion-icon color="light" name="pencil-outline" (click)="editItem(p.id)"></ion-icon>
               </ion-button>
               <!-- <ion-chip class="ion-color ios chip-outline ion-activatable hydrated" id="ion-chip{{p.id}}" outline >
                 <ion-icon name="pencil-outline" (click)="editItem(item_id)"></ion-icon>

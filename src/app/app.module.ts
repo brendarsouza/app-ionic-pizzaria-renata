@@ -36,9 +36,7 @@ import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { ImagePicker } from '@ionic-native/image-picker/ngx';
 import { WebView } from '@ionic-native/ionic-webview/ngx';
 
-
 registerLocaleData(localePt, 'pt');
-
 
 @NgModule({
   declarations: [AppComponent],
@@ -65,9 +63,9 @@ registerLocaleData(localePt, 'pt');
     FirebaseProvider,
     StatusBar,
     SplashScreen,
-      Keyboard,
-      LoadingController,
-      ImagePicker,
+    Keyboard,
+    LoadingController,
+    ImagePicker,
     WebView,
 
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
