@@ -81,7 +81,7 @@ export class CarrinhoPage implements OnInit {
   }
 
   public addItem(item) {
-
+console.log(item.id)
     const tmp = document.getElementById(item.id);
     // tslint:disable-next-line: radix
     const num = parseInt(tmp.getAttribute('value'));
@@ -89,8 +89,21 @@ export class CarrinhoPage implements OnInit {
       document.getElementById(item.id).setAttribute('value', (num + 1) + '');
       document.getElementById('ion-chip' + item.id).classList.remove('ion-color-default');
       document.getElementById('ion-chip' + item.id).classList.add('ion-color-success');
-      this.addItemCart(tmp);
+      this.addItemCart(item.id);
     }
+  }
+
+  public addItemCart(id) {
+    debugger
+    console.log(id);
+    console.log(this.cardapio);
+    let itemcart = [];
+    for (let index = 0; index < this.cardapio.length; index++) {
+      console.log('this.carrinho', this.cardapio[index])
+      itemcart[index]  =  this.cardapioService.getItemCardapio(id);
+
+    }
+    console.log(itemcart);
   }
 
   public removeItem(item) {
@@ -106,14 +119,7 @@ export class CarrinhoPage implements OnInit {
     }
   }
 
-  public addItemCart(id) {
-
-    for (let index = 0; index < this.carrinho.length; index++) {
-      this.carrinho[index] =  this.cardapioService.getItemCardapio(id);
-
-    }
-    console.log(this.carrinho);
-  }
+ 
 
   public removeItemCart(id) {
 

@@ -73,6 +73,7 @@ export class CardapioService {
         });
       })
     );
+    console.log(this.pizzas)
     return this.pizzas;
   }
 
@@ -116,6 +117,7 @@ export class CardapioService {
   }
 
   getItemCardapio(id) {
+    console.log('getItemCardapio',id)
     return this.cardapioCollection.doc<Cardapio>(id).valueChanges();
   }
 
