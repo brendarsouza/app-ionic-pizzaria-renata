@@ -4,20 +4,19 @@ import { FormsModule } from '@angular/forms';
 
 import { IonicModule } from '@ionic/angular';
 
-import { HomePageRoutingModule } from './home-routing.module';
+import { CarrinhoPageRoutingModule } from './carrinho-routing.module';
 
-import { HomePage } from './home.page';
+import { CarrinhoPage } from './carrinho.page';
 import { HeaderPageModule } from '../header/header.module';
-import { HeaderPage } from '../header/header.page';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    HeaderPageModule,
-    HomePageRoutingModule,
+    CarrinhoPageRoutingModule,
+    HeaderPageModule
   ],
-  declarations: [HomePage]
+  declarations: [CarrinhoPage]
 })
-export class HomePageModule {}
+export class CarrinhoPageModule {}

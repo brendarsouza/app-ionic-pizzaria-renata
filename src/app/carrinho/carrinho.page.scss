@@ -26,7 +26,7 @@ ion-toolbar {
   ion-item {
     padding: 5px 0px !important;
     border-top: 0px !important;
-    // border-bottom: 2px solid #4b4237 !important;
+    border-bottom: 2px solid #4b4237 !important;
   }
   
   ion-list {
@@ -39,18 +39,25 @@ ion-toolbar {
     font-weight: 700;
   }
   
-  .item-description {
+  .item-price {
     color: #4b4237;
     width: 80%;
+    font-weight: 700;
+    font-size: 18px;
+  }
+  
+  .item-description {
+    color: #4b4237;
+    width: 60%;
     font-size: 100;
     font-size: 12px;
     font-style: italic;
   }
   
-  .item-price {
+  .item-add-remove {
     color: #4b4237;
     right: 12px;
-    bottom: 18px;
+    bottom: 25px;
     position: absolute;
   }
   
@@ -62,6 +69,12 @@ ion-toolbar {
     margin-top: 25px;
   }
   
-  .my-custom-menu {
-    --width: 500px;
+  .item_input {
+    width: 5vw;
+    border: none;
+    text-align: center;
+  }
+  
+  .background {
+    background-image: url('../../assets/imgs/Picture1.png');
   }

@@ -30,9 +30,13 @@ import { Keyboard } from '@ionic-native/keyboard/ngx';
 import { HeaderPageModule } from './header/header.module';
 import localePt from '@angular/common/locales/pt';
 import {registerLocaleData} from '@angular/common';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { AngularFireDatabaseModule } from 'angularfire2/database';
+
+import { ImagePicker } from '@ionic-native/image-picker/ngx';
+import { WebView } from '@ionic-native/ionic-webview/ngx';
 
 registerLocaleData(localePt, 'pt');
-
 
 @NgModule({
   declarations: [AppComponent],
@@ -43,10 +47,13 @@ registerLocaleData(localePt, 'pt');
     HeaderPageModule,
     // Others
     BrowserModule,
+    FormsModule,
+        ReactiveFormsModule,
     BrowserAnimationsModule,
     AppRoutingModule,
     AngularFireModule.initializeApp(firebaseConfig),
     AngularFirestoreModule,
+    AngularFireDatabaseModule,
     AngularFireAuthModule,
     IonicModule.forRoot(),
     IonicStorageModule.forRoot()
@@ -56,8 +63,10 @@ registerLocaleData(localePt, 'pt');
     FirebaseProvider,
     StatusBar,
     SplashScreen,
-      Keyboard,
-      LoadingController,
+    Keyboard,
+    LoadingController,
+    ImagePicker,
+    WebView,
 
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
     {provide: LOCALE_ID, useValue: 'pt'}

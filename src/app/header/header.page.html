@@ -1,10 +1,21 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-buttons slot="start">
-      <ion-menu-button class="brown-icon" autoHide="false"></ion-menu-button>
-    </ion-buttons>
-    <ion-buttons slot="secondary">
-    </ion-buttons>
-    <ion-title class="brown-title">Menu</ion-title>
-  </ion-toolbar>
-</ion-header>
+<ion-menu side="start" menuId="first" contentId="main">
+  <!-- <ion-header>
+    <ion-toolbar color="primary">
+      <ion-title>Menu</ion-title>
+    </ion-toolbar>
+  </ion-header> -->
+  <ion-content>
+    <ion-list>
+      <ion-item [routerLink]="['/']" >Home</ion-item>
+      <ion-item [routerLink]="['/carrinho']">Fazer Pedido</ion-item>
+    </ion-list>
+
+    <ion-list>
+      <ion-item disabled>Configurações</ion-item>
+      <ion-item [routerLink]="['/cardapio']">Cardápio</ion-item>
+    </ion-list>
+
+  </ion-content>
+</ion-menu>
+
+<ion-router-outlet id="main"></ion-router-outlet>

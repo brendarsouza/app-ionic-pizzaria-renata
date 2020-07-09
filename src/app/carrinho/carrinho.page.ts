@@ -5,11 +5,11 @@ import { CardapioService } from '../services/cardapio/cardapio.service';
 import { Cardapio } from '../interfaces/cardapio.interface';
 
 @Component({
-  selector: 'app-cardapio',
-  templateUrl: './cardapio.page.html',
-  styleUrls: ['./cardapio.page.scss'],
+  selector: 'app-carrinho',
+  templateUrl: './carrinho.page.html',
+  styleUrls: ['./carrinho.page.scss'],
 })
-export class CardapioPage implements OnInit {
+export class CarrinhoPage implements OnInit {
   private loading: HTMLIonLoadingElement;
   public cardapio: Cardapio[] = [];
   public pizzas: Cardapio[] = [];
@@ -80,23 +80,30 @@ export class CardapioPage implements OnInit {
     }
   }
 
-  public addItem() {
+  public addItem(item) {
 
-    console.log('oi');
+    const tmp = document.getElementById(item.id);
+    // tslint:disable-next-line: radix
+    const num = parseInt(tmp.getAttribute('value'));
+    if (num >= 0) {
+      document.getElementById(item.id).setAttribute('value', (num + 1) + '');
+      document.getElementById('ion-chip' + item.id).classList.remove('ion-color-default');
+      document.getElementById('ion-chip' + item.id).classList.add('ion-color-success');
+      this.addItemCart(tmp);
+    }
   }
 
-  public editItem(item) {
-    console.log(item)
-    // const tmp = document.getElementById(item.id);
-    // // tslint:disable-next-line: radix
-    // const num = parseInt(tmp.getAttribute('value'));
-    // if (num > 0) {
-    //   document.getElementById(item.id).setAttribute('value', (num - 1) + '');
+  public removeItem(item) {
+    const tmp = document.getElementById(item.id);
+    // tslint:disable-next-line: radix
+    const num = parseInt(tmp.getAttribute('value'));
+    if (num > 0) {
+      document.getElementById(item.id).setAttribute('value', (num - 1) + '');
 
-    //   document.getElementById('ion-chip' + item.id).classList.remove('ion-color-success');
-    //   document.getElementById('ion-chip' + item.id).classList.add('ion-color-default');
-    //   this.removeItemCart(tmp);
-    // }
+      document.getElementById('ion-chip' + item.id).classList.remove('ion-color-success');
+      document.getElementById('ion-chip' + item.id).classList.add('ion-color-default');
+      this.removeItemCart(tmp);
+    }
   }
 
   public addItemCart(id) {

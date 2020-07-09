@@ -3,11 +3,11 @@ export interface Cardapio {
     nome: string;
     descricao: string;
     valor: number;
-    tipo: CardapioTipo;
+    categoria: string;
+    imagem: string;
 }
 
-export interface CardapioTipo {
+export interface Categoria {
     id: number;
     nome: string;
-    descricao: string;
 }

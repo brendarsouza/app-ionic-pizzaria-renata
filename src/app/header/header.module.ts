@@ -15,6 +15,9 @@ import { HeaderPage } from './header.page';
     IonicModule,
     HeaderPageRoutingModule
   ],
+  exports: [
+    HeaderPage
+  ],
   declarations: [HeaderPage]
 })
 export class HeaderPageModule {}

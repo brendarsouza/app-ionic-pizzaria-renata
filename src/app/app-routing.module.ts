@@ -12,16 +12,12 @@ const routes: Routes = [
     loadChildren: () => import('./home/home.module').then( m => m.HomePageModule)
   },
   {
-    path: 'menu',
-    loadChildren: () => import('./menu/menu.module').then( m => m.MenuPageModule)
-  },
-  {
     path: 'cardapio',
     loadChildren: () => import('./cardapio/cardapio.module').then( m => m.CardapioPageModule)
   },
   {
-    path: 'cardapio-detalhes/:id',
-    loadChildren: () => import('./cardapio/cardapio-detalhes/cardapio-detalhes.module').then( m => m.CardapioDetalhesPageModule)
+    path: 'cardapio-add-item',
+    loadChildren: () => import('./cardapio/cardapio-add-item/cardapio-add-item.module').then( m => m.CardapioAddItemPageModule)
   },
   {
     path: 'cardapio-detalhes',
@@ -32,17 +28,14 @@ const routes: Routes = [
     loadChildren: () => import('./cardapio/cardapio-detalhes/cardapio-detalhes.module').then( m => m.CardapioDetalhesPageModule)
   },
   {
-    path: 'pizza-detalhes',
-    loadChildren: () => import('./pizzas/pizza-detalhes/pizza-detalhes.module').then( m => m.PizzaDetalhesPageModule)
-  },
-  {
-    path: 'pizzas',
-    loadChildren: () => import('./pizzas/pizzas/pizzas.module').then( m => m.PizzasPageModule)
-  },
-  {
     path: 'header',
     loadChildren: () => import('./header/header.module').then( m => m.HeaderPageModule)
   },
+  {
+    path: 'carrinho',
+    loadChildren: () => import('./carrinho/carrinho.module').then( m => m.CarrinhoPageModule)
+  },
+
 ];
 
 @NgModule({

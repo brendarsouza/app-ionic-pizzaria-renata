@@ -1,9 +1,81 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>cardapio-add-item</ion-title>
+    <ion-buttons slot="start">
+      <ion-menu-button class="brown-icon" autoHide="false"></ion-menu-button>
+    </ion-buttons>
+    <ion-buttons slot="secondary"> </ion-buttons>
+    <ion-title class="brown-title">Novo Item - Cardápio</ion-title>
   </ion-toolbar>
 </ion-header>
+<ion-content padding>
+  <form [formGroup]="validations_form" (ngSubmit)="onSubmit(validations_form.value)">
+    <!-- <ion-content fullscreen> -->
+      <app-header></app-header> 
+      <ion-slides>
+        <ion-slide>
+          <div class="slide">
+            <img src="../../../assets/imgs/pizza.jpg" />
+          </div>
+        </ion-slide>
 
-<ion-content>
+        <ion-slide>
+          <img src="../../../assets/imgs/bg-lanches.jpg" />
+        </ion-slide>
 
+        <ion-slide>
+          <img src="../../../assets/imgs/bg-sucos.jpg" />
+        </ion-slide>
+
+        <ion-slide>
+          <img src="../../../assets/imgs/bg-sobremesas.jpg" />
+        </ion-slide>
+
+      </ion-slides> 
+      <ion-card>
+        <ion-card-header>
+          <!-- <ion-card-title>Cardápio</ion-card-title> -->
+          <ion-card-subtitle>Novo Item</ion-card-subtitle>
+        </ion-card-header>
+        <ion-card-content>  
+          <ion-item>
+            <ion-label position="floating">Categoria do Produto</ion-label>
+            <ion-select  formControlName="categoria" interface="popover">
+              <ion-select-option value="Pizzas">Pizzas</ion-select-option>
+              <ion-select-option value="Lanches">Lanches</ion-select-option>
+              <ion-select-option value="Bebidas">Bebidas</ion-select-option>
+              <ion-select-option value="Sobremesas">Sobremesas</ion-select-option>
+            </ion-select>
+          </ion-item>
+          <ion-item>
+            <ion-label position="floating">Nome do Produto</ion-label>
+            <ion-input formControlName="nome"></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label position="floating">Descrição do Produto</ion-label>
+            <ion-input formControlName="descricao"></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label position="floating">Valor do Produto</ion-label>
+            <ion-input  formControlName="valor" inputmode="decimal" pattern="[0-9]*" type="number"></ion-input>
+          </ion-item>
+          
+          <div>
+            <ion-row no-padding>
+              <ion-col size="6" offset="3">
+                <img [src]="image" alt="this is the image"/>
+              </ion-col>
+            </ion-row>
+            <ion-row no-padding>
+              <ion-col size="6" offset="3">
+                <ion-button fill="outline" expand="block" size="small" (click)="openImagePicker()">Change Picture</ion-button>
+              </ion-col>
+            </ion-row>
+          </div>
+          <div class="ion-padding">
+            <ion-button expand="block" type="submit" class="ion-no-margin" [disabled]="!validations_form.valid">Cadastrar</ion-button>
+          </div>
+        </ion-card-content>
+      </ion-card>
+    <!-- </ion-content> -->
+  </form>
 </ion-content>

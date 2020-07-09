@@ -24,7 +24,6 @@ export class HomePage implements OnInit {
   getLanches() {
     this.firebaseProviders.getLanches().then((r) => {
       this.lanches = r;
-      console.log('brenda',this.lanches);
     });
   }
 
