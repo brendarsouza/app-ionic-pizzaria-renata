@@ -5,6 +5,7 @@ export interface Cardapio {
     valor: number;
     categoria: string;
     imagem: string;
+    quantidade: number;
 }
 
 export interface Categoria {

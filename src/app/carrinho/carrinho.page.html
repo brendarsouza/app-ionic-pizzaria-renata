@@ -10,7 +10,8 @@
 
 <ion-content>
   <app-header></app-header>  
-  <ng-container *ngIf="!cardapio || cardapio.length == 0">
+  
+  <ng-container *ngIf="!pizzas || pizzas.length == 0">
     <div *ngFor="let n of [0,1,2]" padding>
       <ion-skeleton-text></ion-skeleton-text>
       <p>
@@ -18,80 +19,124 @@
       </p>
     </div>
   </ng-container>
+  <ion-fab vertical="top" horizontal="end" color="warning" slot="fixed">
+    <ion-fab-button (click)="openCart()" color="warning" #cart>
+      <div class="cart-length mt-5 dark">{{ contadorItemCarrinho | async }}</div>
+      <ion-icon name="cart" class="cart-icon" color="light"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
 
   <!-- Lista de Pizzas -->
-  <div *ngIf="cardapio">
-    <div *ngIf="pizzas.length > 0">
-      <h5 class="featured-title">Pizzas</h5>
-      <ion-list>
-        <ion-item
-          class="item ios in-list ion-focusable item-label hydrated item-inner"
-          *ngFor="let p of pizzas"
-        >
-          <ion-label>
-            <h2 class="item-title">{{p.nome}}</h2>
-            <p class="item-description">{{p.descricao}}</p>
-            <p class="item-price">{{p.valor | currency:'BRL':true:'1.2-2'}}</p>
-            <p class="item-add-remove">
+  <div *ngIf="pizzas.length > 0">
+    <h5 class="featured-title">Pizzas</h5>
+    <ion-list>
+      <ion-card *ngFor="let p of pizzas">
+        <ion-card-header>
+          <ion-card-title>{{ p.nome }}</ion-card-title>
+          <ion-card-subtitle size="10">{{ p.descricao }}</ion-card-subtitle>
+        </ion-card-header>
+        <ion-card-content>
+          <ion-row class="ion-align-items-center">
+            <ion-col size="14">
+              <ion-label color="secondary">
+                <b>{{ p.valor | currency:'BRL':'symbol' }}</b>
+              </ion-label>
+            </ion-col>
+            <ion-col size="4" class="ion-text-right item-add-remove">
               <ion-chip class="ion-color ios chip-outline ion-activatable hydrated" id="ion-chip{{p.id}}" outline >
-                <ion-icon name="remove-outline" (click)="removeItem(item_id)"></ion-icon>
+                <ion-icon name="remove-outline" (click)="removeItem(p)"></ion-icon>
                 <input #item_id  class="item_input" id="{{p.id}}" value="0"  min="0">
-                <ion-icon name="add-outline" (click)="addItem(item_id)"></ion-icon>
+                <ion-icon name="add-outline" (click)="addItem(p)"></ion-icon>
               </ion-chip>
-            </p>
-          </ion-label>       
-        </ion-item>
-      </ion-list>
-    </div>
-    
-    <!-- Lista de Lanches -->
-    <div *ngIf="lanches.length > 0">
-      <h5 class="featured-title">Lanches</h5>
-      <ion-list>
-        <ion-item
-          class="item ios in-list ion-focusable item-label hydrated item-inner"
-          *ngFor="let l of lanches"
-        >
-          <ion-label>
-            <h2 class="item-title">{{l.nome}}</h2>
-            <p class="item-description">{{l.descricao}}</p>
-            <p class="item-price">{{l.valor | currency:'BRL':true:'1.2-2'}}</p>
-            <p class="item-add-remove">
+            </ion-col>
+          </ion-row>
+        </ion-card-content>
+      </ion-card>
+    </ion-list>
+  </div>
+  
+  <!-- Lista de Lanches -->
+  <div *ngIf="lanches.length > 0">
+    <h5 class="featured-title">Lanches</h5>
+    <ion-list>
+      <ion-card *ngFor="let l of lanches">
+        <ion-card-header>
+          <ion-card-title>{{ l.nome }}</ion-card-title>
+          <ion-card-subtitle size="10">{{ l.descricao }}</ion-card-subtitle>
+        </ion-card-header>
+        <ion-card-content>
+          <ion-row class="ion-align-items-center">
+            <ion-col size="14">
+              <ion-label color="secondary">
+                <b>{{ l.valor | currency:'BRL':'symbol' }}</b>
+              </ion-label>
+            </ion-col>
+            <ion-col size="4" class="ion-text-right item-add-remove">
               <ion-chip class="ion-color ios chip-outline ion-activatable hydrated" id="ion-chip{{l.id}}" outline >
-                <ion-icon name="remove-outline" (click)="removeItem(item_id)"></ion-icon>
+                <ion-icon name="remove-outline" (click)="removeItem(l)"></ion-icon>
                 <input #item_id  class="item_input" id="{{l.id}}" value="0"  min="0">
-                <ion-icon name="add-outline" (click)="addItem(item_id)"></ion-icon>
+                <ion-icon name="add-outline" (click)="addItem(l)"></ion-icon>
               </ion-chip>
-            </p>
-          </ion-label>
-        </ion-item>
-      </ion-list>
-    </div>
-
-    <!-- Lista de Bebidas -->
-    <div *ngIf="bebidas.length > 0">
-      <div class="list-bebidas">
-        <h5 class="featured-title">Para matar a sede</h5>
-        <ion-list>
-          <ion-item
-            class="item ios in-list ion-focusable item-label hydrated item-inner"
-            *ngFor="let b of bebidas"
-          >
-            <ion-label>
-              <h2 class="item-title">{{b.nome}}</h2>
-              <p class="item-description">{{b.descricao}}</p>
-              <p class="item-price">{{b.valor | currency:'BRL':true:'1.2-2'}}</p>
-              <p class="item-add-remove">
-                <ion-chip class="ion-color ios chip-outline ion-activatable hydrated" id="ion-chip{{b.id}}" outline >
-                  <ion-icon name="remove-outline" (click)="removeItem(item_id)"></ion-icon>
-                  <input #item_id  class="item_input" id="{{b.id}}" value="0"  min="0">
-                  <ion-icon name="add-outline" (click)="addItem(item_id)"></ion-icon>
-                </ion-chip>
-              </p>
-            </ion-label>
-          </ion-item>
-        </ion-list>
-      </div>
-    </div>
+            </ion-col>
+          </ion-row>
+        </ion-card-content>
+      </ion-card>
+    </ion-list>
+  </div>
+  <!-- Lista de Bebidas -->
+  <div *ngIf="bebidas.length > 0">
+    <h5 class="featured-title">Bebidas</h5>
+    <ion-list>
+      <ion-card *ngFor="let b of bebidas">
+        <ion-card-header>
+          <ion-card-title>{{ b.nome }}</ion-card-title>
+          <ion-card-subtitle size="10">{{ b.descricao }}</ion-card-subtitle>
+        </ion-card-header>
+        <ion-card-content>
+          <ion-row class="ion-align-items-center">
+            <ion-col size="14">
+              <ion-label color="secondary">
+                <b>{{ b.valor | currency:'BRL':'symbol' }}</b>
+              </ion-label>
+            </ion-col>
+            <ion-col size="4" class="ion-text-right item-add-remove">
+              <ion-chip class="ion-color ios chip-outline ion-activatable hydrated" id="ion-chip{{b.id}}" outline >
+                <ion-icon name="remove-outline" (click)="removeItem(b)"></ion-icon>
+                <input #item_id  class="item_input" id="{{b.id}}" value="0"  min="0">
+                <ion-icon name="add-outline" (click)="addItem(b)"></ion-icon>
+              </ion-chip>
+            </ion-col>
+          </ion-row>
+        </ion-card-content>
+      </ion-card>
+    </ion-list>
+  </div>
+  <!-- Lista de Sobremesas -->
+  <div *ngIf="sobremesas.length > 0">
+    <h5 class="featured-title">Sobremesas</h5>
+    <ion-list>
+      <ion-card *ngFor="let s of sobremesas">
+        <ion-card-header>
+          <ion-card-title>{{ s.nome }}</ion-card-title>
+          <ion-card-subtitle size="10">{{ s.descricao }}</ion-card-subtitle>
+        </ion-card-header>
+        <ion-card-content>
+          <ion-row class="ion-align-items-center">
+            <ion-col size="14">
+              <ion-label color="secondary">
+                <b>{{ s.valor | currency:'BRL':'symbol' }}</b>
+              </ion-label>
+            </ion-col>
+            <ion-col size="4" class="ion-text-right item-add-remove">
+              <ion-chip class="ion-color ios chip-outline ion-activatable hydrated" id="ion-chip{{s.id}}" outline >
+                <ion-icon name="remove-outline" (click)="removeItem(s)"></ion-icon>
+                <input #item_id  class="item_input" id="{{s.id}}" value="0"  min="0">
+                <ion-icon name="add-outline" (click)="addItem(s)"></ion-icon>
+              </ion-chip>
+            </ion-col>
+          </ion-row>
+        </ion-card-content>
+      </ion-card>
+    </ion-list>
   </div>
 </ion-content>

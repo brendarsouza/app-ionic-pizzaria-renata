@@ -35,6 +35,9 @@ import { AngularFireDatabaseModule } from 'angularfire2/database';
 
 import { ImagePicker } from '@ionic-native/image-picker/ngx';
 import { WebView } from '@ionic-native/ionic-webview/ngx';
+import { CarrinhoModalPageModule } from './carrinho/carrinho-modal/carrinho-modal.module';
+
+
 
 registerLocaleData(localePt, 'pt');
 
@@ -42,6 +45,7 @@ registerLocaleData(localePt, 'pt');
   declarations: [AppComponent],
   entryComponents: [],
   imports: [
+    CarrinhoModalPageModule,
     // Pages
     LoginPageModule,
     HeaderPageModule,
