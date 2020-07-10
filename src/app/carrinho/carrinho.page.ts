@@ -94,16 +94,15 @@ console.log(item.id)
   }
 
   public addItemCart(id) {
-    debugger
-    console.log(id);
-    console.log(this.cardapio);
-    let itemcart = [];
-    for (let index = 0; index < this.cardapio.length; index++) {
-      console.log('this.carrinho', this.cardapio[index])
-      itemcart[index]  =  this.cardapioService.getItemCardapio(id);
-
+    this.carrinho[0] = this.cardapioService.getItemCardapio(id);
+    console.log('this.carrinho[0] =>', this.carrinho[0]);
+    for (let index = 0; index < this.carrinho.length; index++) {
+      console.log('index =>', index);
+      this.carrinho[index]  =  this.cardapioService.getItemCardapio(id);
+      console.log('this.carrinho[index] =>', this.carrinho[index]);
     }
-    console.log(itemcart);
+    console.log('tamanho =>',this.carrinho.length)
+
   }
 
   public removeItem(item) {
@@ -118,8 +117,6 @@ console.log(item.id)
       this.removeItemCart(tmp);
     }
   }
-
- 
 
   public removeItemCart(id) {
 
