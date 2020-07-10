@@ -81,7 +81,7 @@ export class CarrinhoPage implements OnInit {
   }
 
   public addItem(item) {
-
+console.log(item.id)
     const tmp = document.getElementById(item.id);
     // tslint:disable-next-line: radix
     const num = parseInt(tmp.getAttribute('value'));
@@ -89,8 +89,20 @@ export class CarrinhoPage implements OnInit {
       document.getElementById(item.id).setAttribute('value', (num + 1) + '');
       document.getElementById('ion-chip' + item.id).classList.remove('ion-color-default');
       document.getElementById('ion-chip' + item.id).classList.add('ion-color-success');
-      this.addItemCart(tmp);
+      this.addItemCart(item.id);
     }
+  }
+
+  public addItemCart(id) {
+    this.carrinho[0] = this.cardapioService.getItemCardapio(id);
+    console.log('this.carrinho[0] =>', this.carrinho[0]);
+    for (let index = 0; index < this.carrinho.length; index++) {
+      console.log('index =>', index);
+      this.carrinho[index]  =  this.cardapioService.getItemCardapio(id);
+      console.log('this.carrinho[index] =>', this.carrinho[index]);
+    }
+    console.log('tamanho =>',this.carrinho.length)
+
   }
 
   public removeItem(item) {
@@ -104,15 +116,6 @@ export class CarrinhoPage implements OnInit {
       document.getElementById('ion-chip' + item.id).classList.add('ion-color-default');
       this.removeItemCart(tmp);
     }
-  }
-
-  public addItemCart(id) {
-
-    for (let index = 0; index < this.carrinho.length; index++) {
-      this.carrinho[index] =  this.cardapioService.getItemCardapio(id);
-
-    }
-    console.log(this.carrinho);
   }
 
   public removeItemCart(id) {

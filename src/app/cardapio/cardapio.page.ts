@@ -105,7 +105,7 @@ export class CardapioPage implements OnInit {
       this.carrinho[index] =  this.cardapioService.getItemCardapio(id);
 
     }
-    console.log(this.carrinho);
+    console.log(id);
   }
 
   public removeItemCart(id) {
