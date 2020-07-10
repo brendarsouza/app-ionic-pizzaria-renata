@@ -7,11 +7,7 @@ const routes: Routes = [
   {
     path: '',
     component: CarrinhoPage
-  },  {
-    path: 'carrinho-modal',
-    loadChildren: () => import('./carrinho-modal/carrinho-modal.module').then( m => m.CarrinhoModalPageModule)
   }
-
 ];
 
 @NgModule({

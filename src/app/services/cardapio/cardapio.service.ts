@@ -73,6 +73,7 @@ export class CardapioService {
         });
       })
     );
+    console.log(this.pizzas)
     return this.pizzas;
   }
 
