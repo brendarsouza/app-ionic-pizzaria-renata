@@ -21,4 +21,5 @@ describe('CarrinhoModalPage', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+  
 });

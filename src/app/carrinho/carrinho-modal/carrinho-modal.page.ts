@@ -55,7 +55,7 @@ export class CarrinhoModalPage implements OnInit {
     alert.present().then(() => {
       this.modalCtrl.dismiss();
     });
-    console.log('carrinh-modal =>', this.carrinho)
+    
     let navigationExtras: NavigationExtras = {
       state: {
         pedido: this.carrinho
