@@ -12,21 +12,13 @@ export interface Product {
 })
 export class CarrinhoService {
 
-  data: Product[] = [
-    { id: 0, name: 'Pizza Salami', price: 8.99, quantidade: 0 },
-    { id: 1, name: 'Pizza Classic', price: 5.49, quantidade: 0 },
-    { id: 2, name: 'Sliced Bread', price: 4.99, quantidade: 0 },
-    { id: 3, name: 'Salad', price: 6.99, quantidade: 0 }
-  ];
  
   private cart = [];
   private cartItemCount = new BehaviorSubject(0);
  
   constructor() {}
  
-  getProducts() {
-    return this.data;
-  }
+  
  
   getCart() {
     return this.cart;
