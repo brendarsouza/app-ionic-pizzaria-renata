@@ -13,11 +13,13 @@
 
 <ion-content>
   <app-header></app-header>  
+
   <ion-fab vertical="top" horizontal="end" color="warning" slot="fixed">
     <ion-fab-button [routerLink]="['/cardapio-add-item']" color="warning">      
       <ion-icon name="add-circle-outline" class="cart-icon" color="light"></ion-icon>
     </ion-fab-button>
   </ion-fab>
+  
   <ng-container *ngIf="!cardapio || cardapio.length == 0">
     <div *ngFor="let n of [0,1,2]" padding>
       <ion-skeleton-text></ion-skeleton-text>
