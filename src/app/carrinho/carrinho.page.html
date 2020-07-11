@@ -21,6 +21,13 @@
       </p>
     </div>
   </ng-container>
+  
+  <ion-fab vertical="top" horizontal="end" color="warning" slot="fixed">
+    <ion-fab-button (click)="openCart()" color="warning" #cart>
+      <div class="cart-length mt-5 dark">{{ contadorItemCarrinho | async }}</div>
+      <ion-icon name="cart" class="cart-icon" color="light"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
 
   <!-- Lista de Pizzas -->
   <div *ngIf="pizzas.length > 0">
