@@ -58,7 +58,6 @@ export class CarrinhoPage implements OnInit {
       this.lanches = res;
       this.dismissLoader();
     });
-    console.log(this.lanches)
   }
 
   public getBebidas() {
@@ -94,7 +93,6 @@ export class CarrinhoPage implements OnInit {
 
   async openCart() {
     this.animateCSS('bounceOutLeft', true);
- 
     let modal = await this.modalCtrl.create({
       component: CarrinhoModalPage,
       cssClass: 'cart-modal'
