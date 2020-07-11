@@ -1,12 +1,12 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
-import { CarrinhoModalPage } from './carrinho-modal.page';
+import { ConfirmarPedidoPage } from './confirmar-pedido.page';
 
 const routes: Routes = [
   {
-    path: 'carrinho-modal',
-    component: CarrinhoModalPage
+    path: 'confirmar-pedido',
+    component: ConfirmarPedidoPage
   }
 ];
 
@@ -14,4 +14,4 @@ const routes: Routes = [
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule],
 })
-export class CarrinhoModalPageRoutingModule {}
+export class ConfirmarPedidoPageRoutingModule {}

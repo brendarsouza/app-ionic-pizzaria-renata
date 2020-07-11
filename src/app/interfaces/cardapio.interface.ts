@@ -6,6 +6,7 @@ export interface Cardapio {
     categoria: string;
     imagem: string;
     quantidade: number;
+    observacao: string;
 }
 
 export interface Categoria {

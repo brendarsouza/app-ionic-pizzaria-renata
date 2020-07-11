@@ -1,10 +1,13 @@
 <ion-header>
   <ion-toolbar>
-    <ion-buttons slot="start">
+    <ion-buttons slot="end">
       <ion-menu-button class="brown-icon" autoHide="false"></ion-menu-button>
     </ion-buttons>
     <ion-buttons slot="secondary"> </ion-buttons>
     <ion-title class="brown-title">Faça seu Pedido</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button text="" class="brown-icon" defaultHref="/carrinho"></ion-back-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
@@ -33,7 +36,7 @@
       <ion-card *ngFor="let p of pizzas">
         <ion-card-header>
           <ion-card-title>{{ p.nome }}</ion-card-title>
-          <ion-card-subtitle size="10">{{ p.descricao }}</ion-card-subtitle>
+          <ion-card-subtitle size="10" class="mt-5">{{ p.descricao }}</ion-card-subtitle>
         </ion-card-header>
         <ion-card-content>
           <ion-row class="ion-align-items-center">
@@ -51,6 +54,7 @@
             </ion-col>
           </ion-row>
         </ion-card-content>
+        
       </ion-card>
     </ion-list>
   </div>

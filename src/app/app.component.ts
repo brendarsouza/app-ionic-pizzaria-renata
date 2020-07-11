@@ -20,7 +20,7 @@ export class AppComponent {
         console.log(usuario);
         if (usuario) {
           // this.rootPage = 'home';
-          this.rootPage = 'menu';
+          this.rootPage = 'home';
         } else {
           this.rootPage = 'login';
         }
