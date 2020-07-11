@@ -1,0 +1,89 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="end">
+      <ion-menu-button class="brown-icon" autoHide="false"></ion-menu-button>
+    </ion-buttons>
+    <ion-buttons slot="secondary"> </ion-buttons>
+    <ion-title class="brown-title">Finalizar Pedido</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button text="" class="brown-icon" defaultHref="/carrinho"></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <app-header></app-header> 
+  <ion-list-header>
+    Descrição Pedido
+  </ion-list-header> 
+  <ion-card>
+    <ion-card-header>
+      <ion-card-subtitle>Confirmar Pedido</ion-card-subtitle>
+      <ion-card-title>Pedido</ion-card-title>
+    </ion-card-header>
+  
+    <ion-card-content>
+      <form [formGroup]="validations_form" (ngSubmit)="onSubmit(validations_form.value)">
+        <!-- <ion-content fullscreen> -->
+          <app-header></app-header> 
+          
+          <ion-card>
+            <ion-card-header>
+              <!-- <ion-card-title>Cardápio</ion-card-title> -->
+              <ion-card-subtitle>Confirmar Dados</ion-card-subtitle>
+            </ion-card-header>
+            <ion-card-content>  
+              <ion-item>
+                <ion-label position="floating">Nome do Cliente</ion-label>
+                <ion-input formControlName="nome"></ion-input>
+              </ion-item>
+              <ion-item>
+                <ion-label position="floating">Telefone</ion-label>
+                <ion-input formControlName="telefone"></ion-input>
+              </ion-item>
+              <ion-card-subtitle>Endereço</ion-card-subtitle>
+              <ion-item>
+                <ion-label position="floating">Logradouro</ion-label>
+                <ion-input  formControlName="logradouro"></ion-input>
+              </ion-item>
+              <ion-item>
+                <ion-label position="floating">Número</ion-label>
+                <ion-input  formControlName="numero"></ion-input>
+              </ion-item>
+              <ion-item>
+                <ion-label position="floating">Complemento</ion-label>
+                <ion-input  formControlName="complemento"></ion-input>
+              </ion-item>
+              <ion-item>
+                <ion-label position="floating">Ponto de Referência</ion-label>
+                <ion-input  formControlName="ponto_referencia"></ion-input>
+              </ion-item>
+              <ion-item>
+                <ion-label position="floating">Bairro</ion-label>
+                <ion-input  formControlName="bairro"></ion-input>
+              </ion-item>
+              <ion-item>
+                <ion-label position="floating">Observação</ion-label>
+                <ion-input  formControlName="observacao"></ion-input>
+              </ion-item>
+              
+              
+              <div class="ion-padding">
+                <ion-button expand="block" type="submit" class="ion-no-margin" [disabled]="!validations_form.valid">Cadastrar</ion-button>
+              </div>
+            </ion-card-content>
+          </ion-card>
+        <!-- </ion-content> -->
+      </form>
+    </ion-card-content>
+    
+  </ion-card>
+
+ 
+  
+  <ion-card>
+    <ion-button expand="full">Finalizar Pedido</ion-button>
+  </ion-card> 
+
+</ion-content>

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute, Router, NavigationExtras } from '@angular/router';
 import { Cardapio } from '../interfaces/cardapio.interface';
 import { NavParams } from '@ionic/angular';
 import { CarrinhoService } from '../services/carrinho/carrinho.service';
@@ -13,9 +13,13 @@ export class ConfirmarPedidoPage implements OnInit {
 
   pedido: any;
   carrinho: Cardapio[] = [];
+  usuario: any;
 
   constructor(
-    private cartService: CarrinhoService, private route: ActivatedRoute, private router: Router) {
+    private cartService: CarrinhoService, 
+    private route: ActivatedRoute, 
+    private router: Router
+    ) {
     this.route.queryParams.subscribe(params => {
       let getNav = this.router.getCurrentNavigation();
       if (getNav.extras.state) {
@@ -23,12 +27,25 @@ export class ConfirmarPedidoPage implements OnInit {
       }
     });
   }
+
   ngOnInit() { 
     this.carrinho = this.cartService.getCart();
+
   }
 
   getTotal() {
     return this.carrinho.reduce((i, j) => i + j.valor * j.quantidade, 0);
+  }
+
+  goToFinalizarPedido(){
+    // let navigationExtras: NavigationExtras = {
+    //   state: {
+    //     pedido: this.carrinho,
+    //     usuario: this.usuario
+    //   }
+    // };
+    // this.router.navigate(['finalizar-pedido'], navigationExtras);
+    this.router.navigate(['finalizar-pedido']);
   }
 
 }

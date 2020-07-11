@@ -38,7 +38,11 @@ const routes: Routes = [
   {
     path: 'confirmar-pedido/:pedido',
     loadChildren: () => import('./confirmar-pedido/confirmar-pedido.module').then( m => m.ConfirmarPedidoPageModule)
+  },  {
+    path: 'finalizar-pedido',
+    loadChildren: () => import('./finalizar-pedido/finalizar-pedido.module').then( m => m.FinalizarPedidoPageModule)
   }
+
 
 ];
 
