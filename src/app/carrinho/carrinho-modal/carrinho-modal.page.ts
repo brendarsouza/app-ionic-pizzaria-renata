@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { CarrinhoService, Product } from 'src/app/services/carrinho/carrinho.service';
+
 import { ModalController, AlertController } from '@ionic/angular';
 import { Cardapio } from 'src/app/interfaces/cardapio.interface';
 import { app } from 'firebase';
 import { Router, NavigationExtras } from '@angular/router';
+import { CarrinhoService } from 'src/app/services/carrinho/carrinho.service';
 
 @Component({
   selector: 'app-carrinho-modal',
@@ -61,7 +62,6 @@ export class CarrinhoModalPage implements OnInit {
       }
     };
     this.router.navigate(['confirmar-pedido'], navigationExtras);
-    // this.router.navigate(['/confirmar-pedido', {pedido: this.carrinho}]);
   }
 
 }
