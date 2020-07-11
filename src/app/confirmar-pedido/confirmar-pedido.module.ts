@@ -5,7 +5,6 @@ import { FormsModule } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
 
 import { ConfirmarPedidoPageRoutingModule } from './confirmar-pedido-routing.module';
-
 import { ConfirmarPedidoPage } from './confirmar-pedido.page';
 import { HeaderPageModule } from '../header/header.module';
 

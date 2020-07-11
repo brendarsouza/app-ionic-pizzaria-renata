@@ -5,7 +5,6 @@ import { FormsModule } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
 
 import { CarrinhoPageRoutingModule } from './carrinho-routing.module';
-
 import { CarrinhoPage } from './carrinho.page';
 import { HeaderPageModule } from '../header/header.module';
 

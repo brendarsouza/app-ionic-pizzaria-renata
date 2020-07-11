@@ -25,12 +25,10 @@ export class ConfirmarPedidoPage implements OnInit {
   }
   ngOnInit() { 
     this.carrinho = this.cartService.getCart();
-
   }
 
   getTotal() {
     return this.carrinho.reduce((i, j) => i + j.valor * j.quantidade, 0);
   }
-
 
 }
