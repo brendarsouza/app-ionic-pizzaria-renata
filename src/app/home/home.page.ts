@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FirebaseProvider } from 'src/providers/firebase';
+import { CardapioService } from '../services/cardapio/cardapio.service';
 
 @Component({
   selector: 'app-home',
@@ -16,14 +17,15 @@ export class HomePage implements OnInit {
   };
 
   constructor(
-    private firebaseProviders: FirebaseProvider,
+    private cardapioService: CardapioService,
   ) { 
     this.getLanches();
   }
   
-  getLanches() {
-    this.firebaseProviders.getLanches().then((r) => {
-      this.lanches = r;
+  public getLanches() {
+    this.cardapioService.getLanches().subscribe((res) => {
+      this.lanches = res;
+      
     });
   }
 

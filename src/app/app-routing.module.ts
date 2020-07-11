@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 
 const routes: Routes = [
-  { path: '', redirectTo: 'cardapio', pathMatch: 'full' },
+  { path: '', redirectTo: 'login', pathMatch: 'full' },
   {
     path: 'login',
     loadChildren: () => import('./login/login.module').then( m => m.LoginPageModule)
@@ -35,6 +35,10 @@ const routes: Routes = [
     path: 'carrinho',
     loadChildren: () => import('./carrinho/carrinho.module').then( m => m.CarrinhoPageModule)
   },
+  {
+    path: 'confirmar-pedido/:pedido',
+    loadChildren: () => import('./confirmar-pedido/confirmar-pedido.module').then( m => m.ConfirmarPedidoPageModule)
+  }
 
 ];
 

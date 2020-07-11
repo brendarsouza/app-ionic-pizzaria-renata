@@ -3,7 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RouteReuseStrategy } from '@angular/router';
 
-import { IonicModule, IonicRouteStrategy, LoadingController } from '@ionic/angular';
+import { IonicModule, IonicRouteStrategy, LoadingController, NavParams } from '@ionic/angular';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
 
@@ -35,6 +35,10 @@ import { AngularFireDatabaseModule } from 'angularfire2/database';
 
 import { ImagePicker } from '@ionic-native/image-picker/ngx';
 import { WebView } from '@ionic-native/ionic-webview/ngx';
+import { CarrinhoModalPageModule } from './carrinho/carrinho-modal/carrinho-modal.module';
+import { ConfirmarPedidoPageModule } from './confirmar-pedido/confirmar-pedido.module';
+
+
 
 registerLocaleData(localePt, 'pt');
 
@@ -45,10 +49,12 @@ registerLocaleData(localePt, 'pt');
     // Pages
     LoginPageModule,
     HeaderPageModule,
+    CarrinhoModalPageModule,
+    ConfirmarPedidoPageModule,
     // Others
     BrowserModule,
     FormsModule,
-        ReactiveFormsModule,
+    ReactiveFormsModule,
     BrowserAnimationsModule,
     AppRoutingModule,
     AngularFireModule.initializeApp(firebaseConfig),
@@ -67,6 +73,8 @@ registerLocaleData(localePt, 'pt');
     LoadingController,
     ImagePicker,
     WebView,
+    NavParams,
+    
 
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
     {provide: LOCALE_ID, useValue: 'pt'}

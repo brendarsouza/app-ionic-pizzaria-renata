@@ -108,7 +108,7 @@ export class LoginPage implements OnInit {
             let data = res.data();
             this.storage.set('usuario', data)
               .then(() => {
-                this.navCtrl.navigateRoot('cardapio');
+                this.navCtrl.navigateRoot('carrinho');
               });
           });
       })
@@ -137,7 +137,7 @@ export class LoginPage implements OnInit {
       .then(() => {
         this.storage.set('usuario', data)
         .then(() => {
-          this.navCtrl.navigateRoot('cardapio');
+          this.navCtrl.navigateRoot('login');
         });
       })
       .catch((err) => {

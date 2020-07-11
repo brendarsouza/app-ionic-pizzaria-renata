@@ -1,18 +1,23 @@
 <ion-header>
   <ion-toolbar>
-    <ion-buttons slot="start">
+    <ion-buttons slot="end">
       <ion-menu-button class="brown-icon" autoHide="false"></ion-menu-button>
     </ion-buttons>
     <ion-buttons slot="secondary"> </ion-buttons>
     <ion-title class="brown-title">Cardápio</ion-title>
-    <ion-button class="bg-transparent" slot="end" [routerLink]="['/cardapio-add-item']">
-      <ion-icon class="brown-icon bg-transparent" color="light" name="add-circle-outline" ></ion-icon>
-    </ion-button>
+    <ion-buttons slot="start">
+      <ion-back-button text="" class="brown-icon" defaultHref="/cardapio"></ion-back-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
   <app-header></app-header>  
+  <ion-fab vertical="top" horizontal="end" color="warning" slot="fixed">
+    <ion-fab-button [routerLink]="['/cardapio-add-item']" color="warning">      
+      <ion-icon name="add-circle-outline" class="cart-icon" color="light"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
   <ng-container *ngIf="!cardapio || cardapio.length == 0">
     <div *ngFor="let n of [0,1,2]" padding>
       <ion-skeleton-text></ion-skeleton-text>

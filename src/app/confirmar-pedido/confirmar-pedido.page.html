@@ -1,0 +1,74 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="end">
+      <ion-menu-button class="brown-icon" autoHide="false"></ion-menu-button>
+    </ion-buttons>
+    <ion-buttons slot="secondary"> </ion-buttons>
+    <ion-title class="brown-title">Confirmar Pedido</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button text="" class="brown-icon" defaultHref="/carrinho"></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-nav #ionNav></ion-nav> 
+
+  <app-header></app-header> 
+  <ion-list-header>
+    Descrição Pedido
+  </ion-list-header> 
+  <ion-card>
+    <ion-card-header>
+      <ion-card-subtitle>Confirmar Pedido</ion-card-subtitle>
+      <ion-card-title>Pedido</ion-card-title>
+    </ion-card-header>
+  
+    <ion-card-content>
+      <ion-item *ngFor="let p of pedido" >
+        <ion-avatar slot="start">
+          <img src="{{p.image}}">
+        </ion-avatar>
+        <ion-label>
+          <h2>{{p.nome}}</h2>
+          <h3 class="end">{{ p.valor | currency:'BRL':'symbol' }}</h3>
+          <p>
+           Obs: {{p.descricao}}
+          </p> 
+        </ion-label>
+      </ion-item>
+    </ion-card-content>
+    <ion-card-content>
+      <ion-item>
+        <ion-card-title >Total</ion-card-title>
+        <ion-card-title slot="end">{{getTotal() | currency:'BRL':'symbol' }}</ion-card-title>
+      </ion-item>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Observações</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-label position="stacked">Notes</ion-label>
+      <ion-textarea placeholder="Adicione aqui observações sore seu pedido. Ex: Sem cebola"></ion-textarea>
+    </ion-card-content>
+  </ion-card> 
+  
+  <!-- <ion-card>
+    <ion-card-header>
+      <ion-card-title>Endereço</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-label position="stacked">Notes</ion-label>
+      <ion-textarea placeholder="Adicione aqui observações sore seu pedido. Ex: Sem cebola"></ion-textarea>
+    </ion-card-content>
+  </ion-card>  -->
+  <ion-card>
+    <ion-button expand="full">Finalizar Pedido</ion-button>
+
+  </ion-card>
+  
+
+</ion-content>
