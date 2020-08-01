@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router, NavigationExtras } from '@angular/router';
-import { Cardapio } from '../interfaces/cardapio.interface';
+import { Cardapio, TipoConsumo } from '../interfaces/cardapio.interface';
 import { NavParams } from '@ionic/angular';
 import { CarrinhoService } from '../services/carrinho/carrinho.service';
 
@@ -14,18 +14,42 @@ export class ConfirmarPedidoPage implements OnInit {
   pedido: any;
   carrinho: Cardapio[] = [];
   usuario: any;
-
+  selectcategory:any;
+  selectcategory1:any;
+  
+  tipoConsumo: TipoConsumo[] = [
+    { id: 1, tipo: 'Balcão'},
+    { id: 2, tipo: 'Retirar'},
+    { id: 3, tipo: 'Entregar'},
+  ];
+  tipoConsumoSelecionado: any;
   constructor(
     private cartService: CarrinhoService, 
     private route: ActivatedRoute, 
     private router: Router
     ) {
+      this.selectcategory="Entregar";
+
     this.route.queryParams.subscribe(params => {
       let getNav = this.router.getCurrentNavigation();
       if (getNav.extras.state) {
         this.pedido = getNav.extras.state.pedido;
       }
     });
+  }
+  codeSelected(){
+    switch(this.selectcategory)
+    {
+      case "1": 
+      this.selectcategory="Balcão";
+      break;
+      case "2": 
+      this.selectcategory="Retirar";
+      break;
+      case "3": 
+      this.selectcategory="Entregar";
+      break;
+    }
   }
 
   ngOnInit() { 
@@ -38,14 +62,14 @@ export class ConfirmarPedidoPage implements OnInit {
   }
 
   goToFinalizarPedido(){
-    // let navigationExtras: NavigationExtras = {
-    //   state: {
-    //     pedido: this.carrinho,
-    //     usuario: this.usuario
-    //   }
-    // };
-    // this.router.navigate(['finalizar-pedido'], navigationExtras);
-    this.router.navigate(['finalizar-pedido']);
+    let navigationExtras: NavigationExtras = {
+      state: {
+        pedido: this.carrinho,
+        usuario: this.usuario,
+        tipoConsumoSelecionado: this.selectcategory
+      }
+    };
+    this.router.navigate(['finalizar-pedido'], navigationExtras);
   }
 
 }

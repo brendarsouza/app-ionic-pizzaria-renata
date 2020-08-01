@@ -6,12 +6,14 @@ import { IonicModule } from '@ionic/angular';
 import { CarrinhoModalPageRoutingModule } from './carrinho-modal-routing.module';
 import { CarrinhoModalPage } from './carrinho-modal.page';
 import { ConfirmarPedidoPageModule } from '../../confirmar-pedido/confirmar-pedido.module';
+import { FinalizarPedidoPageModule } from 'src/app/finalizar-pedido/finalizar-pedido.module';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
+    FinalizarPedidoPageModule,
     ConfirmarPedidoPageModule,
     CarrinhoModalPageRoutingModule
   ],

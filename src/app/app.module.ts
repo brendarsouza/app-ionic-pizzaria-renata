@@ -37,6 +37,7 @@ import { ImagePicker } from '@ionic-native/image-picker/ngx';
 import { WebView } from '@ionic-native/ionic-webview/ngx';
 import { CarrinhoModalPageModule } from './carrinho/carrinho-modal/carrinho-modal.module';
 import { ConfirmarPedidoPageModule } from './confirmar-pedido/confirmar-pedido.module';
+import { FinalizarPedidoPageModule } from './finalizar-pedido/finalizar-pedido.module';
 
 
 
@@ -51,6 +52,7 @@ registerLocaleData(localePt, 'pt');
     HeaderPageModule,
     CarrinhoModalPageModule,
     ConfirmarPedidoPageModule,
+    FinalizarPedidoPageModule,
     // Others
     BrowserModule,
     FormsModule,

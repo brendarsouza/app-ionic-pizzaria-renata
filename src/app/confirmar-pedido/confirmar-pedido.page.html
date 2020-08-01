@@ -12,8 +12,6 @@
 </ion-header>
 
 <ion-content>
-  <ion-nav #ionNav></ion-nav> 
-
   <app-header></app-header> 
   <ion-list-header>
     Descrição Pedido
@@ -55,6 +53,41 @@
       <ion-textarea placeholder="Adicione aqui observações sore seu pedido. Ex: Sem cebola"></ion-textarea>
     </ion-card-content>
   </ion-card> 
+
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Consumo</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-label>Selecione opção</ion-label>
+      <ion-select name="category" [selectedText]="selectcategory" [(ngModel)]="selectcategory" (ionChange)="codeSelected()" >
+        <ion-select-option *ngFor="let tipo of tipoConsumo" value="{{tipo.id}}">{{tipo.tipo}}</ion-select-option>
+        
+        </ion-select>
+      <!-- <ion-list>
+        <ion-radio-group value="biff">
+          <ion-list-header>
+            <ion-label>Selecione opção</ion-label>
+          </ion-list-header>
+      
+          <ion-item>
+            <ion-label>Balcão</ion-label>
+            <ion-radio slot="start" value="BALCAO"></ion-radio>
+          </ion-item>
+      
+          <ion-item>
+            <ion-label>Retirar</ion-label>
+            <ion-radio slot="start" value="RETIRAR"></ion-radio>
+          </ion-item>
+      
+          <ion-item>
+            <ion-label>Entregar</ion-label>
+            <ion-radio slot="start" value="ENTREGAR"></ion-radio>
+          </ion-item>
+        </ion-radio-group>
+      </ion-list> -->
+    </ion-card-content>
+  </ion-card>
   
   <ion-card>
     <ion-button expand="full" (click)="goToFinalizarPedido()">Finalizar Pedido</ion-button>

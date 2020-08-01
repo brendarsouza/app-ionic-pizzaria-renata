@@ -14,6 +14,7 @@ import { HeaderPageModule } from '../header/header.module';
     FormsModule,
     IonicModule,
     HeaderPageModule,
+    FormsModule,
     ConfirmarPedidoPageRoutingModule
   ],
   declarations: [ConfirmarPedidoPage]
